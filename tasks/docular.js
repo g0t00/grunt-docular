@@ -50,7 +50,6 @@ module.exports = function(grunt) {
         return groupData;
     }
 
-    var sys = require('sys');
     var exec = require('child_process').exec;
 
     // ==========================================================================
@@ -104,10 +103,8 @@ module.exports = function(grunt) {
         try {
             var express = require('express');
             var app = express();
-
             if (options.livereload){
                 var portLivereload = Number.isInteger(options.livereload) ? options.livereload : 35729;
-                console.log('live reload enabled');
                 app.use(require('connect-livereload')({
                     port: portLivereload
                 }));
