@@ -63,7 +63,7 @@ module.exports = function(grunt) {
     */
 
     grunt.registerTask('docular', 'Configurable setup to generate AngularJS and other class based documentation.', function() {
-        
+
         var docular = require('docular');
         var options = grunt.config('docular');
 
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
         if(!options.plugins) {
             options.plugins = [require('docular-ng-plugin'), require('docular-markdown-plugin')];
         }
-        
+
         //Run the gen-docs script
         var process_gen_docs_done = this.async();
         docular.genDocs(options).then(function () {
@@ -106,9 +106,10 @@ module.exports = function(grunt) {
             var app = express();
 
             if (options.livereload){
+                var port = Number.isInteger(options.livereload) ? options.livereload : 35729;
                 console.log('live reload enabled');
                 app.use(require('connect-livereload')({
-                    port: 35729
+                    port: port
                 }));
             }
 
