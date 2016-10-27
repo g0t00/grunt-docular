@@ -106,10 +106,10 @@ module.exports = function(grunt) {
             var app = express();
 
             if (options.livereload){
-                var port = Number.isInteger(options.livereload) ? options.livereload : 35729;
+                var portLivereload = Number.isInteger(options.livereload) ? options.livereload : 35729;
                 console.log('live reload enabled');
                 app.use(require('connect-livereload')({
-                    port: port
+                    port: portLivereload
                 }));
             }
 
